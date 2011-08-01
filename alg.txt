@@ -1,0 +1,40 @@
+sort the sells and buys in separate tables; older to newer
+then, for every sale
+1.find quantity available for sale from the last year (Ql)
+2.find taxable qty Qt = Qs-Ql; if this is negative, then ignorei, no tax for sale. move to next sale
+3.if Qt is positive, find out the purchase price of Qt, sale price of Qt and find out tax component of sale
+4. add up all individual tax components to get total tax for the year
+
+
+algorithm to find qty available for sale from last year
+1. find total buys till beginning of last year, Bt
+2. find total sales till date,St
+3. available qty = Bt-St (negatives shall be treated as zero)
+
+algorithm to find the purchase price of Qt
+1. calculate the cumulative sales (S) till date (including the one being considered)
+2. parse the total buy transactions and find the transaction (Ti) at which the cumulative buy qty (B)  >= S
+3. Qt1 = Ti - (B - S)
+4. if Qt1 == Qt, then purchase price for Qt is same as that of Ti
+    else,
+    while Qt >0,
+            if Ti <= Qt
+                    purchase price of Qt1 is that of Ti
+                    Qt = Qt - Qt1
+                    i = i -1
+                    Qt1 = Ti
+            else if Ti > Qt
+                    Qt1 = Qt
+                    purchase price of Qt1 is same as that of Ti
+                    break from the loop(stop calculating)
+
+alternate method to find out capital gains:
+
+for every sale, find out the corresponding purchase and purchase date. If the purchase date and sale date are less than one year apart, it qualifies for short term
+
+0. extarct date pertaining to each stock, and for each stock perform the following operations
+1. seggregate sells and buys
+2. loop through each sale, starting from the first
+    
+    look at teh first buy Bi
+    if Bi >
