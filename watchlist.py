@@ -57,6 +57,5 @@ class Watchlist:
             f.close()
             return 0 
 
-
-        
-
+    def delete_stocks(self, stocks = {}):
+        pass
